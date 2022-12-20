@@ -42,19 +42,15 @@ int main()
     int j = 0;
     while(j<5){
         sem_init(&forks[j],0,1);
-        j++;
+        
     }
-    
+    j++;
     // creating philosphers
-    int k = 0;
-    while(k<5)
-    {
+    for(int k = 0; k<5; k++){
         if(pthread_create(&DP[k],NULL,philospherThinking,&i[k]) == -1)
         {
-            printf("Error while threads creation\n");
-            k++;
+            printf("Error in threads creation\n");
         }
-
     }
     
     for(int x = 0; x<5;x++)
