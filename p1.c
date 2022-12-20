@@ -52,10 +52,13 @@ int main()
             printf("Error in threads creation\n");
         }
     }
-    
-    for(int x = 0; x<5;x++)
-    {
-        pthread_join(DP[x],NULL);
+    int x = 0;
+    while(x<5){
+        pthread_join(DP[x],NULL);    
+        x++;
     }
+    
+       
+    
     return 0;
 }
