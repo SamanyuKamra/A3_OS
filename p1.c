@@ -8,18 +8,19 @@
 
 pthread_mutex_t waiter;
 sem_t forks[5];
-void eat(int philosphers)
-{
-    printf("Philospher %d eating with fork %d and %d\n",philosphers,philosphers,(philosphers +1)%5);
-    usleep(2);
-    sem_post(&forks[philosphers]);
-    sem_post(&forks[(philosphers + 1)%5]);
-}
 void getforks(int philosphers){
     sem_wait(&forks[philosphers]);
     sem_wait(&forks[(philosphers + 1)%5]);
 
 }
+void eat(int philosphers)
+{
+    printf("Philospher %d eating with fork %d and %d\n",philosphers,philosphers,(philosphers +1)%5);
+    usleep(500000);
+    sem_post(&forks[philosphers]);
+    sem_post(&forks[(philosphers + 1)%5]);
+}
+
 
 
 void *philospherThinking(void *i)
