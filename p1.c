@@ -42,9 +42,10 @@ int main()
     int j = 0;
     while(j<5){
         sem_init(&forks[j],0,1);
+        j++;
         
     }
-    j++;
+    
     // creating philosphers
     for(int k = 0; k<5; k++){
         if(pthread_create(&DP[k],NULL,philospherThinking,&i[k]) == -1)
