@@ -11,7 +11,7 @@ sem_t forks[5];
 void eat(int philosphers)
 {
     printf("Philospher %d eating with fork %d and %d\n",philosphers,philosphers,(philosphers +1)%5);
-    usleep(500000);
+    usleep(2);
     sem_post(&forks[philosphers]);
     sem_post(&forks[(philosphers + 1)%5]);
 }
